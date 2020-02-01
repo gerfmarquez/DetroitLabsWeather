@@ -17,15 +17,12 @@ class WeatherPresenter @Inject constructor (private val weatherInteractor: Weath
         rxDisposable = weatherInteractor.fetchWeather(lat, lon) .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe( { successWeatherResponse ->
-                val temperatureFahrenheit = successWeatherResponse?.main?.temp?.toInt()
-                if(temperatureFahrenheit == null) {
-                    weatherView?.onTemperatureFailed()
-                } else {
-                    weatherView?.updateTemperature(temperatureFahrenheit)
-                }
+                    weatherView?.updateTemperature(
+                        successWeatherResponse.name,
+                        successWeatherResponse?.main?.temp?.toInt().toString())
             },
             {
-                _ ->
+                throwable ->
                 weatherView?.onTemperatureFailed()
             }
             )

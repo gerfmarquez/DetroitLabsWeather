@@ -2,18 +2,17 @@ package com.marquez.detroitlabs.weatherapp
 
 import androidx.room.Room
 import com.marquez.detroitlabs.weatherapp.database.WeatherDatabase
-import com.marquez.detroitlabs.weatherapp.location.LocationModule
+
 import com.marquez.detroitlabs.weatherapp.service.WeatherService
 import com.marquez.detroitlabs.weatherapp.weather.WeatherDao
 import com.marquez.detroitlabs.weatherapp.weather.WeatherInteractor
+import com.marquez.detroitlabs.weatherapp.weather.WeatherModule
 import com.marquez.detroitlabs.weatherapp.weather.WeatherRepository
 import dagger.Module
 import dagger.Provides
 
 import javax.inject.Singleton
-
-
-@Module(includes = [WeatherActivityModule::class])
+@Module(includes = [WeatherActivityModule::class, WeatherModule::class])
 class WeatherAppModule {
     @Singleton
     @Provides
@@ -28,23 +27,6 @@ class WeatherAppModule {
         .fallbackToDestructiveMigration().build()
     }
 
-    @Singleton
-    @Provides
-    fun provideWeatherDao(db:WeatherDatabase) : WeatherDao {
-        return db.weatherDao()
-    }
-
-    @Singleton
-    @Provides
-    fun provideWeatherRepo(weatherService: WeatherService, weatherDao : WeatherDao): WeatherRepository {
-            return WeatherRepository(weatherService,weatherDao )
-    }
-
-    @Singleton
-    @Provides
-    fun provideWeatherInteractor(weatherRepository: WeatherRepository) : WeatherInteractor {
-        return WeatherInteractor(weatherRepository )
-    }
 
 
 }

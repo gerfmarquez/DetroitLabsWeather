@@ -16,6 +16,7 @@ import com.marquez.detroitlabs.weatherapp.R
 import com.marquez.detroitlabs.weatherapp.location.LocationData
 import com.marquez.detroitlabs.weatherapp.location.LocationPresenter
 import com.marquez.detroitlabs.weatherapp.location.LocationView
+import com.marquez.detroitlabs.weatherapp.model.WeatherResponse
 import dagger.android.support.DaggerAppCompatActivity
 
 import kotlinx.android.synthetic.main.activity_main.*
@@ -50,14 +51,13 @@ class WeatherActivity : DaggerAppCompatActivity() , WeatherView, LocationView {
         locationPresenter.cleanup()
     }
 
-
     override fun updateLocation(locationData: LocationData) {
         weatherPresenter.fetchWeather(locationData.lat,locationData.lon)
     }
-    override fun updateTemperature(temperature: Int) {
+    override fun updateTemperature(city : String, temperature : String) {
         pg_loading.visibility = View.GONE
-        tv_temperature.text = temperature.toString()
-
+        tv_temperature.text = temperature
+        tv_city.text = city
     }
     override fun failedLocation() {
         pg_loading.visibility = View.GONE

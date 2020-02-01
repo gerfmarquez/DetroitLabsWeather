@@ -2,8 +2,6 @@ package com.marquez.detroitlabs.weatherapp.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.marquez.detroitlabs.weatherapp.model.Coord
-import com.marquez.detroitlabs.weatherapp.model.Main
 import com.marquez.detroitlabs.weatherapp.model.Sys
 import com.marquez.detroitlabs.weatherapp.model.WeatherResponse
 import com.marquez.detroitlabs.weatherapp.weather.WeatherDao
