@@ -8,7 +8,7 @@ android {
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.marquez.detroitlabs"
-        minSdkVersion 23
+        minSdkVersion 26
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -72,12 +72,8 @@ dependencies {
     testImplementation 'com.google.dagger:dagger-android-support:2.26'
     kaptTest 'com.google.dagger:dagger-android-processor:2.26'
     kaptTest 'com.google.dagger:dagger-compiler:2.26'
-    //Dager Android Test
-//    androidTestImplementation 'com.google.dagger:dagger-android:2.26'
-//    androidTestImplementation 'com.google.dagger:dagger-android-support:2.26'
-//    kaptAndroidTest 'com.google.dagger:dagger-android-processor:2.26'
-//    kaptAndroidTest 'com.google.dagger:dagger-compiler:2.26'
 
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
 
     implementation "androidx.room:room-runtime:2.2.3"
     implementation "androidx.room:room-rxjava2:2.2.3"

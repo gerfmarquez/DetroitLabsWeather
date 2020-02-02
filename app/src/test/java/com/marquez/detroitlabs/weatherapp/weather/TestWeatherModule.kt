@@ -7,9 +7,5 @@ import javax.inject.Singleton
 
 @Module
 class TestWeatherModule {
-//    @Provides @Singleton
-//    fun providesWeatherInteractor() : WeatherInteractor {
-//        return Mockito.mock(WeatherInteractor::class.java)
-//    }
 
 }

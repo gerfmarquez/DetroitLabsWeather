@@ -15,11 +15,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_temperature"/>
+            app:layout_constraintTop_toTopOf="@id/tv_forecast_temperature"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_temperature"
+            android:id="@+id/tv_forecast_temperature"
             android:text=""
             android:textSize="140sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -36,5 +36,16 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
-
+    <Button
+            android:id="@+id/bt_fiveday_forecast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="5 Day Forecast"
+            android:textStyle="normal"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_city"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

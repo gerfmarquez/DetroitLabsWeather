@@ -1,5 +1,6 @@
 package com.marquez.detroitlabs.weatherapp.service
 
+import com.marquez.detroitlabs.weatherapp.model.Forecast
 import com.marquez.detroitlabs.weatherapp.model.WeatherResponse
 import io.reactivex.Single
 
@@ -15,12 +16,14 @@ import retrofit2.http.Query
 interface WeatherService {
 
     @GET("data/2.5/weather")
-    fun fetchWeather(@Query("lat") lat: Double,
+    fun fetchWeather(
+        @Query("lat") lat: Double,
         @Query("lon") lon: Double) : Single<WeatherResponse>
-//    @GET
-//    fun fetchForecast(): Single<Object> {
-//
-//    }
+
+    @GET("data/2.5/forecast")
+    fun fetchForecast(
+        @Query("lat") lat: Double,
+        @Query("lon") lon: Double) : Single<Forecast>
 
     companion object  {
         val apiKey: String = "4343d559e3b708fedb53edc03a332c75"

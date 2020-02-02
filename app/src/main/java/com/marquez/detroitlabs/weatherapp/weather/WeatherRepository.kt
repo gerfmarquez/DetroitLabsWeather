@@ -13,8 +13,10 @@ class WeatherRepository @Inject constructor (
     private val weatherService: WeatherService,
     private val weatherDao: WeatherDao
 ) {
-    val cache_memory_ms : Int = 5 * 60 * 1000 //5 minutes cache data
-    val cache_database_ms : Int = 15 * 60 * 1000 //5 minutes cache data
+    companion object {
+        val cache_memory_ms : Int = 5 * 60 * 1000 //5 minutes cache data
+        val cache_database_ms : Int = 15 * 60 * 1000 //5 minutes cache data
+    }
     var timestamp : Long = 1
     var weatherResponseMemoryCache : WeatherResponse? = null
     var disposable : Disposable? = null
@@ -22,10 +24,10 @@ class WeatherRepository @Inject constructor (
     fun fetchWeather(lat: Double, lon: Double): Single<WeatherResponse> {
         if(isMemoryCacheLatest() && weatherResponseMemoryCache != null) {
             return Single.just(weatherResponseMemoryCache)
-        } else if (isDatabaseCacheLatest()) {
+        } else if ( isDatabaseCacheLatest() && isDatabaseCached()) {
             return weatherDao.load()
         } else {
-            val single = fetchWeatherFromNetwork(lat,lon)
+            val single = weatherService.fetchWeather(lat,lon)
             disposable  = single .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.io()).subscribe(
             {
@@ -40,13 +42,13 @@ class WeatherRepository @Inject constructor (
         }
     }
 
-    fun fetchWeatherFromNetwork(lat: Double, lon: Double) : Single<WeatherResponse> {
-        return weatherService.fetchWeather(lat,lon)
+    private fun isMemoryCacheLatest() : Boolean {
+        return System.currentTimeMillis()   <  timestamp  + cache_memory_ms
     }
-    private fun isMemoryCacheLatest() : Boolean{
-        return (timestamp + cache_memory_ms ) > System.currentTimeMillis()
+    private fun isDatabaseCacheLatest() : Boolean {
+        return System.currentTimeMillis()   <   timestamp + cache_database_ms
     }
-    private fun isDatabaseCacheLatest() : Boolean{
-        return (timestamp + cache_database_ms ) > System.currentTimeMillis()
+    private fun isDatabaseCached() : Boolean {
+       return   weatherDao.load().blockingGet() != null
     }
 }
