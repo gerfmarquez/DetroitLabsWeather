@@ -8,6 +8,7 @@ import org.junit.Test
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnit
 import org.mockito.junit.MockitoRule
 
@@ -19,10 +20,11 @@ class LocationPresenterTest {
         @JvmField
         val schedulers = RxImmediateSchedulerRule()
     }
-    @Mock
-    lateinit var  locationProvider: LocationProvider
+
     @Mock
     lateinit var  locationView: LocationView
+    @Mock
+    lateinit var locationInteractor: LocationInteractor
 
     @InjectMocks
     lateinit var locationPresenter: LocationPresenter
@@ -31,13 +33,13 @@ class LocationPresenterTest {
     fun presenterTestSuccessful() {
         val locationData  = LocationData(1,1.5,1.5)
 
-        Mockito.`when`(locationProvider.getLocation())
+        Mockito.`when`(locationInteractor.getLocation())
             .thenReturn(Single.just(locationData))
 
         locationPresenter.bindView(locationView)
         locationPresenter.fetchLocation()
 
-        Mockito.verify(locationView).updateLocation(locationData)
+        verify(locationView).updateLocation(locationData)
 
 
     }

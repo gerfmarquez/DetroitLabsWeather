@@ -16,8 +16,8 @@
             android:paddingRight="18dp"
             android:layout_weight="1.0"
             android:maxLines="2"
-
     />
+
     <TextView
             android:id="@+id/tv_forecast_temperature"
             android:layout_width="wrap_content"
