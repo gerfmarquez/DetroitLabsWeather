@@ -5,6 +5,6 @@ import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class FragmentBuildersModule {
-    @ContributesAndroidInjector
-    abstract fun contributeForecastFragment() : ForecastFragment
+//    @ContributesAndroidInjector
+//    abstract fun contributeForecastFragment() : ForecastFragment
 }

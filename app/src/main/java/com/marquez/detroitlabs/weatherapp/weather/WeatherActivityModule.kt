@@ -8,6 +8,6 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class WeatherActivityModule {
 
-    @ContributesAndroidInjector
-    abstract fun  bindWeatherActivity() : WeatherActivity
+//    @ContributesAndroidInjector
+//    abstract fun  bindWeatherActivity() : WeatherActivity
 }

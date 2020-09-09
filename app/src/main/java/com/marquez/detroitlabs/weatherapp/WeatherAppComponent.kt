@@ -24,4 +24,5 @@ interface WeatherAppComponent : AndroidInjector<WeatherApp> {
         }
 
         override fun inject(app: WeatherApp)
+
 }

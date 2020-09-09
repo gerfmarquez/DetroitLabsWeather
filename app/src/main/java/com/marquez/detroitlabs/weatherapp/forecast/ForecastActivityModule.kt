@@ -8,7 +8,7 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ForecastActivityModule {
 
-    @ContributesAndroidInjector ( modules = [FragmentBuildersModule::class])
-    abstract fun  bindForecastActivity() : ForecastActivity
+//    @ContributesAndroidInjector ( modules = [FragmentBuildersModule::class])
+//    abstract fun  bindForecastActivity() : ForecastActivity
 
 }
