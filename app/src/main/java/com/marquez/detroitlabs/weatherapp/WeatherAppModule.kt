@@ -1,23 +1,21 @@
 package com.marquez.detroitlabs.weatherapp
 
-import androidx.room.Room
-import com.marquez.detroitlabs.weatherapp.database.WeatherDatabase
 import com.marquez.detroitlabs.weatherapp.forecast.ForecastActivity
-import com.marquez.detroitlabs.weatherapp.forecast.ForecastActivityModule
 import com.marquez.detroitlabs.weatherapp.forecast.ForecastFragment
-import com.marquez.detroitlabs.weatherapp.forecast.FragmentBuildersModule
 
-import com.marquez.detroitlabs.weatherapp.service.WeatherService
 import com.marquez.detroitlabs.weatherapp.weather.WeatherActivity
-import com.marquez.detroitlabs.weatherapp.weather.WeatherActivityModule
 
 import com.marquez.detroitlabs.weatherapp.weather.WeatherModule
 
 import dagger.Module
-import dagger.Provides
 import dagger.android.ContributesAndroidInjector
 
-import javax.inject.Singleton
+/** This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ * Copyright 2020, Gerardo Marquez.
+ */
+
 @Module(includes = [ WeatherModule::class])
 abstract class WeatherAppModule {
 

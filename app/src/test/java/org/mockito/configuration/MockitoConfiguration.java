@@ -1,7 +1,6 @@
 package org.mockito.configuration;
 
 
-
 import androidx.annotation.NonNull;
 import org.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues;
 import org.mockito.invocation.InvocationOnMock;
@@ -9,6 +8,12 @@ import org.mockito.stubbing.Answer;
 
 import io.reactivex.Observable;
 import io.reactivex.Single;
+
+/** This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ * Copyright 2020, Gerardo Marquez.
+ */
 
 public class MockitoConfiguration extends DefaultMockitoConfiguration {
     public Answer<Object> getDefaultAnswer() {
